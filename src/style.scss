@@ -1,0 +1,101 @@
+$ImageWidth: 256px * 2.5;
+$ImageHeight: 108px * 3;
+$icon_hover: #2D8868;
+$icon: #eee;
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 在使用改插件时，可以删除body选择器 */
+body {
+    height: 100vh;
+    @include center();
+}
+
+#slides {
+    position: relative;
+    border: 1px solid #ccc;
+    width: $ImageWidth;
+    height: $ImageHeight;
+    overflow: hidden;
+
+    .images {
+        position: relative;
+        left: 0;
+        display: flex;
+        transition: all .5s ease-in-out;
+
+        img {
+            display: block;
+            flex-shrink: 0;
+            width: $ImageWidth;
+            height: auto;
+        }
+
+    }
+
+    .icons {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 20%;
+        height: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-end;
+
+        .icon {
+            width: 10px;
+            height: 15px;
+            opacity: .5;
+            background-color: $icon;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $icon_hover;
+                opacity: 1;
+            }
+        }
+
+        .focus_icon {
+            background-color: $icon_hover;
+            height: 20px;
+            opacity: 1;
+        }
+    }
+
+    .arrow {
+
+        .left,
+        .right {
+            position: absolute;
+            color: #fff;
+            font-size: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            width: 30px;
+            height: 60px;
+            background-color: #ccc;
+            opacity: .5;
+            cursor: pointer;
+            @include center;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .right {
+            right: 0;
+        }
+    }
+}
